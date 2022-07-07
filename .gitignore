@@ -31,3 +31,5 @@ context/config.js
 
 # generated data json file
 data.json
+data.jsonl
+files

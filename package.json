@@ -13,9 +13,11 @@
     "url": "https://github.com/Brightscout/mattermost-etl/issues"
   },
   "dependencies": {
+    "@gitbeaker/node": "^35.6.0",
     "bunyan": "^1.8.10",
     "joi": "^10.6.0",
     "lodash": "^4.17.4",
+    "mongodb": "^4.7.0",
     "mssql": "^4.0.4",
     "slug": "^0.9.1",
     "xmldoc": "^1.1.0"
@@ -34,6 +36,7 @@
     "test": "npm run lint && mocha lib --recursive",
     "test-watch": "npm run test -- --watch",
     "test-coverage": "istanbul cover _mocha lib -- --recursive",
-    "start": "node index.js | bunyan"
+    "start": "node index.js | bunyan",
+    "start:rocketchat": "node rocketchat.js | bunyan"
   }
 }
