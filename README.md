@@ -13,7 +13,7 @@ An ETL framework to migrate data from Jabber to Mattermost. This utility exports
 
 3. Install dependencies  
 `$ cd mattermost-etl`  
-`$ npm install` or `$ yarn install`
+`$ npm install`
 
 4. Run tests  
 `$ npm test`
@@ -31,6 +31,37 @@ An ETL framework to migrate data from Jabber to Mattermost. This utility exports
 `$ npm start`
 
 2. Inspect the output file, `data.json`, or whatever you set as the target filename. Ensure the results are as [expected](https://docs.mattermost.com/deployment/bulk-loading.html#data-format).
+
+## Export RocketChat
+
+1. Copy the example config file to config.js  
+   ```
+   cp context/config.example.rocketchat.js context/config.js
+   ```
+
+2. Prepare your source and target configuration
+
+   1. Set `source.uploadsPath` for file uploads (user avatars and file uploads)
+   2. Set `source.customEmojiPath` for custom emojies
+   3. Set `target.filesPath` for MM output directory
+
+   Migration supports FileSystem and GridFS source only. 
+
+3. If you have LDAP enabled, Community version of Mattermost doesn't support LDAP. 
+   If you have Community version, consider configuring ldap mapping to gitlab or disable it to use default login.  
+   
+   Specify it in `config.js`. Set `ldap_auth_service` to map ldap to a MM login service. 
+   If it's GitLab, configure `gitlab` with `host` and `token` registered in Gitlab with User access. 
+   It is used for id mapping, without it MM won't import the users and throw an error.  
+   Before migrating to MM, ensure you have Gitlab integration enabled in MM and all users are present in Gitlab.
+
+4. If you used RocketChat discussions, they will migrate in separate channels with random names. 
+   You can merge discussions in parent channel with `mergeDiscussionIntoParent`
+5. Global channel **General** in Rocket Chat and in Mattermost **Town Square**. 
+   The configuration provides default example for that case in `channels.map`. 
+   You can specify migration for other channels also.
+
+6. Run migrate script with `npm run start:rocketchat`
 
 ## Import
 
