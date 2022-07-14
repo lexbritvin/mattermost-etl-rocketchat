@@ -34,6 +34,19 @@ An ETL framework to migrate data from Jabber to Mattermost. This utility exports
 
 ## Export RocketChat
 
+Export supports the following entities:
+1. Channels
+2. Direct channels
+3. Custom emoji
+4. User uploads
+5. Posts with per user flag. Channel pins are not supported by import specification.
+6. Replies and Reactions
+7. Discussions are partially supported, see below
+8. File storage: FileSystem and GridFS
+9. Admin roles are migrated, but only global roles are supported
+
+## RocketChat exporting
+
 1. Copy the example config file to config.js  
    ```
    cp context/config.example.rocketchat.js context/config.js
@@ -44,8 +57,6 @@ An ETL framework to migrate data from Jabber to Mattermost. This utility exports
    1. Set `source.uploadsPath` for file uploads (user avatars and file uploads)
    2. Set `source.customEmojiPath` for custom emojies
    3. Set `target.filesPath` for MM output directory
-
-   Migration supports FileSystem and GridFS source only. 
 
 3. If you have LDAP enabled, Community version of Mattermost doesn't support LDAP. 
    If you have Community version, consider configuring ldap mapping to gitlab or disable it to use default login.  
@@ -60,8 +71,9 @@ An ETL framework to migrate data from Jabber to Mattermost. This utility exports
 5. Global channel **General** in Rocket Chat and in Mattermost **Town Square**. 
    The configuration provides default example for that case in `channels.map`. 
    You can specify migration for other channels also.
-
 6. Run migrate script with `npm run start:rocketchat`
+7. Configure Mattermost (DB and Gitlab integration) before running the migration
+8. Run the migration in MM
 
 ## Import
 
