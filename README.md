@@ -35,15 +35,15 @@ An ETL framework to migrate data from Jabber to Mattermost. This utility exports
 ## Export RocketChat
 
 Export supports the following entities:
-1. Channels
-2. Direct channels
-3. Custom emoji
-4. User uploads
-5. Posts with per user flag. Channel pins are not supported by import specification.
-6. Replies and Reactions
-7. Discussions are partially supported, see below
-8. File storage: FileSystem and GridFS
-9. Admin roles are migrated, but only global roles are supported
+
+1. Users and roles. Only global roles are supported
+2. Custom emoji
+3. Channels
+4. Direct channels
+5. Discussions are partially supported, see below
+7. User uploads. File storage: FileSystem and GridFS
+8. Posts with per user flag. Channel pins are not supported by import specification.
+9. Replies and Reactions
 
 ## RocketChat exporting
 
