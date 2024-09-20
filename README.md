@@ -66,9 +66,9 @@ Export supports the following entities:
    It is used for id mapping, without it MM won't import the users and throw an error.  
    Before migrating to MM, ensure you have Gitlab integration enabled in MM and all users are present in Gitlab.
 
-4. If you used RocketChat discussions, they will migrate in separate channels with random names. 
-   You can merge discussions in parent channel with `mergeDiscussionIntoParent`
-5. Global channel in Rocket Chat us **General** and in Mattermost - **Town Square**. 
+4. If you used RocketChat discussions, they will migrate in separate channels with their full names. 
+   You can instead choose to merge discussions into their parent channel with `mergeDiscussionIntoParent`
+5. Global channel in Rocket Chat uses **General** and in Mattermost - **Town Square**. 
    To have only 1 global channel, the configuration provides default example in `channels.map`. 
    You can specify migration for other channels as well.
 6. Run migrate script with `npm run start:rocketchat`
